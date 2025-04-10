@@ -5,6 +5,8 @@ import { HoldersModule } from './holders/holders.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { Holder } from './holders/entities/holder.entity';
 import { Account } from './accounts/entities/account.entity';
+import { Transaction } from './accounts/entities/transaction.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,10 +23,11 @@ import { Account } from './accounts/entities/account.entity';
       ssl: {
         rejectUnauthorized: false,
       },
-      entities: [Holder, Account],
+      entities: [Holder, Account, Transaction],
     }),
     HoldersModule,
     AccountsModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

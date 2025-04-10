@@ -1,98 +1,193 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Dock Digital Account API é uma aplicação NestJS que gerencia contas digitais, permitindo operações como criação de contas, depósitos, saques e consulta de transações. A aplicação utiliza PostgreSQL como banco de dados e autenticação JWT via Amazon Cognito.
 
-## Project setup
+## Funcionalidades
 
-```bash
-$ npm install
-```
+Gerenciamento de titulares (cadastro, remoção)
+Gerenciamento de contas (criação, consulta, alteração de status)
+Transações financeiras (depósito, saque)
+Consulta de histórico de transações com filtros
+Autenticação JWT com Amazon Cognito
 
-## Compile and run the project
+## Pré-requisitos
 
-```bash
-# development
-$ npm run start
+Node.js (v20.15.0)
+PostgreSQL
+Amazon Cognito (para autenticação)
 
-# watch mode
-$ npm run start:dev
+## Configuração do Ambiente
 
-# production mode
-$ npm run start:prod
-```
+1. Banco de Dados PostgreSQL
+   É necessário ter um banco de dados PostgreSQL acessível.
+   É preciso configurar o seu IP no EC2 da AWS para que tenha acesso, entre em contato.
+   As credenciais devem ser configuradas no arquivo .env.
 
-## Run tests
+2. Configuração do Amazon Cognito
+   Esta aplicação utiliza Amazon Cognito para autenticação JWT. É necessário configurar:
 
-```bash
-# unit tests
-$ npm run test
+3. Variáveis de Ambiente
+   Crie um arquivo .env na raiz do projeto com as seguintes variáveis disponíveis em .env.test
 
-# e2e tests
-$ npm run test:e2e
+# Clonar o repositório
 
-# test coverage
-$ npm run test:cov
-```
+git clone https://github.com/seu-usuario/dock-digital-account.git
 
-## Deployment
+# Instalar dependências
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+npm install
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+# Compilar a aplicação
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+npm run build
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+# Desenvolvimento
 
-## Resources
+npm run start:dev
+A API estará disponível em: http://localhost:3000
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Documentação da API (Swagger)
 
-## Support
+A documentação da API estará disponível em: http://localhost:3000/api
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+## Autenticação
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Para autenticar requisições, obtenha um token JWT do Cognito:
 
-## License
+curl -X POST https://cognito-idp.us-east-2.amazonaws.com/oauth2/token \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -d "grant_type=client_credentials&client_id=4afrig7c2bkv630jrbuvve0mav&client_secret=seu-client-secret&scope=default-m2m-resource-server-dvzxx9/read"
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Use o token obtido no header Authorization de todas as requisições:
+
+curl -X GET http://localhost:3000/accounts/123456 \
+ -H "Authorization: Bearer seu-token-jwt"
+
+---
+
+** Estrutura do Projeto **
+
+src/
+├── accounts/ # Módulo de contas
+│ ├── controllers/ # Controladores de contas e transações
+│ ├── dtos/ # Objetos de transferência de dados
+│ ├── entities/ # Entidades do TypeORM
+│ ├── enums/ # Enumerações (status, tipos)
+│ ├── interfaces/ # Interfaces para injeção de dependência
+│ ├── responses/ # Objetos de resposta
+│ └── services/ # Serviços de negócio
+├── holders/ # Módulo de titulares
+├── auth/ # Configuração de autenticação
+├── common/ # Componentes compartilhados
+└── test/ # Factories para testes
+
+# Executar todos os testes
+
+npm test
+
+# Executar testes com coverage
+
+npm run test:cov
+
+# Executar testes em modo watch
+
+npm run test:watch
+
+---
+
+# Endpoints
+
+## TITULARES
+
+# POST /holders - Criar um novo titular
+
+curl --location 'http://localhost:3000/holders' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w' \
+--data '{
+"fullName": "Mariquinha Marques",
+"cpf": "22222222227"
+}'
+
+# DELETE /holders/:id - Remover um titular
+
+curl --location --request DELETE 'http://localhost:3000/holders/8908a51e-8612-4e6e-ad17-1c8fc5dccb95' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w'
+
+## CONTAS
+
+# POST /accounts - Criar uma conta digital para um titular
+
+curl --location 'http://localhost:3000/accounts' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w' \
+--data '{
+"cpf": "22222222227"
+}'
+
+# GET /accounts/:value - Consultar conta por CPF ou número
+
+curl --location 'http://localhost:3000/accounts/22222222227' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w'
+
+# PATCH /accounts/:accountNumber/status - Atualizar status da conta
+
+curl --location --request PATCH 'http://localhost:3000/accounts/794933/status' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w' \
+--data '{
+"status": "active"
+}'
+
+## TRANSAÇÕES/EXTRATO
+
+# POST /accounts/transactions/deposit - Realizar depósito
+
+curl --location 'http://localhost:3000/accounts/transactions/deposit' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w' \
+--data '{
+"accountNumber": "794933",
+"amount": 620.00
+}'
+
+# POST /accounts/transactions/withdraw - Realizar saque
+
+curl --location 'http://localhost:3000/accounts/transactions/withdraw' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w' \
+--data '{
+"accountNumber": "794933",
+"amount": 1.00
+}'
+
+# GET /accounts/transactions/:accountNumber - Consultar histórico de transações
+
+curl --location 'http://localhost:3000/accounts/transactions/794933?startDate=2024-04-12&endDate=2025-04-31&=null' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJraWQiOiIrejVqcUtwYjBUaFJsNzJIMnF6YmQyUWhhS3Q2bm9ua1FOTjBHVlFYamRjPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI0YWZyaWc3YzJia3Y2MzBqcmJ1dnZlMG1hdiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGVmYXVsdC1tMm0tcmVzb3VyY2Utc2VydmVyLWR2enh4OVwvcmVhZCIsImF1dGhfdGltZSI6MTc0NDMwMDg0MywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfZ0djVUV4clR1IiwiZXhwIjoxNzQ0MzA0NDQzLCJpYXQiOjE3NDQzMDA4NDMsInZlcnNpb24iOjIsImp0aSI6IjE1MzMzMThhLWNjODAtNDhjNC05NTBmLTMwNWRjMDNmNzUwNiIsImNsaWVudF9pZCI6IjRhZnJpZzdjMmJrdjYzMGpyYnV2dmUwbWF2In0.Fxb_kJcRxjmKh3-37cUrewRDX0VDVg3ydnvuCJcnRlPmMwoQqfNUtqX8nDd6YPOjsNkaeyhA7oVX5SagcDUIEfk8pT-UUss8rRDbY-tKlYpLr1ngIoiVtqytksLSOgfU_7DHgQPZGBgqLyn-nq4n4ueV_kLHrSg56cCq2Rd7ZewuWR06jdObH0i9L0ssKCTS6n-PvFkPCa6OuPUDG3iREsdyFnXTOtslht3POwHSZSmVvAIkN0n5egYHXzBnpuE7JSjv2RyZO0CqlUwBAZbsPs50BdShhDGgq-1igwdxYWlrpWR6sPpF1mi88OGAwVAFOWixYebTd_3byoqBB_jL5w'
+
+---
+
+## Limites e Restrições
+
+Saque diário máximo: R$ 2.000,00
+Uma conta por CPF
+Contas fechadas não podem ser bloqueadas
+Histórico de transações limitado a 6 meses
+
+## Logging
+
+A aplicação utiliza o sistema de logging do NestJS para registrar eventos importantes:
+
+Informações sobre criação de contas e titulares
+Detalhes de transações financeiras
+Erros e exceções com stack traces para depuração
+
+## Contato
+
+Para dúvidas ou sugestões, entre em contato pelo e-mail: naomi.moura@icloud.com
