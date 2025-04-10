@@ -6,7 +6,6 @@ import {
   makeCreateAccountDto,
   makeAccount,
   makeUpdateStatusDto,
-  makeAccountResponseDto,
 } from '../../test/factories';
 import { IAccountsService } from '../interfaces/accounts-service.interface';
 
