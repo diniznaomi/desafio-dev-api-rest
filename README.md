@@ -20,7 +20,6 @@ Amazon Cognito (para autenticação)
 
 1. Banco de Dados PostgreSQL
    É necessário ter um banco de dados PostgreSQL acessível.
-   É preciso configurar o seu IP no EC2 da AWS para que tenha acesso, entre em contato.
 
    * As credenciais devem ser configuradas no arquivo .env.
 
