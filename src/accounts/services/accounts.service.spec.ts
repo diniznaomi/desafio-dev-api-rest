@@ -58,6 +58,7 @@ describe('AccountsService', () => {
       const createAccountDto = makeCreateAccountDto();
       const holder = makeHolder({ cpf: createAccountDto.cpf });
       const account = makeAccount({
+        id: 'uuid-test',
         holder,
         accountNumber: '123456',
         agency: '0001',
@@ -90,7 +91,11 @@ describe('AccountsService', () => {
         }),
       );
       expect(accountRepo.save).toHaveBeenCalledWith(account);
-      expect(result).toEqual(account);
+      expect(result).toEqual({
+        id: account.id,
+        accountNumber: account.accountNumber,
+        agency: account.agency,
+      });
     });
 
     it('should throw NotFoundException when holder not found', async () => {
@@ -111,16 +116,21 @@ describe('AccountsService', () => {
       const createAccountDto = makeCreateAccountDto();
       const holder = makeHolder({ cpf: createAccountDto.cpf });
       const existingAccount = makeAccount({
+        id: 'uuid-test',
         holder,
+        accountNumber: '123456',
+        agency: '0001',
         status: AccountStatus.CLOSED,
       });
 
-      holderRepo.findOne.mockResolvedValue(holder);
-      accountRepo.findOne.mockResolvedValue(existingAccount);
-      accountRepo.save.mockResolvedValue({
+      const reactivatedAccount = {
         ...existingAccount,
         status: AccountStatus.ACTIVE,
-      });
+      };
+
+      holderRepo.findOne.mockResolvedValue(holder);
+      accountRepo.findOne.mockResolvedValue(existingAccount);
+      accountRepo.save.mockResolvedValue(reactivatedAccount);
 
       const result = await service.createByCpf(createAccountDto);
 
@@ -134,7 +144,11 @@ describe('AccountsService', () => {
         ...existingAccount,
         status: AccountStatus.ACTIVE,
       });
-      expect(result.status).toEqual(AccountStatus.ACTIVE);
+      expect(result).toEqual({
+        id: reactivatedAccount.id,
+        accountNumber: reactivatedAccount.accountNumber,
+        agency: reactivatedAccount.agency,
+      });
     });
 
     it('should throw ConflictException when account already exists and is active', async () => {

@@ -21,6 +21,7 @@ import { CreateAccountDto } from '../dtos/create-account.dto';
 import { AccountResponseDto } from '../responses/account.response';
 import { UpdateStatusDto } from '../dtos/update-status.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { CreateAccountResponse } from '../responses/create-account.response';
 
 @ApiTags('Accounts')
 @Controller('accounts')
@@ -36,16 +37,19 @@ export class AccountsController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   @ApiOperation({ summary: 'Create a digital account using holder CPF' })
-  @ApiResponse({ status: 201, description: 'Account successfully created' })
+  @ApiResponse({
+    status: 201,
+    description: 'Account successfully created',
+    type: CreateAccountResponse,
+  })
   @ApiResponse({ status: 404, description: 'Holder not found' })
   @ApiResponse({ status: 409, description: 'Account already exists' })
-  async create(@Body() accountData: CreateAccountDto): Promise<void> {
+  async create(
+    @Body() accountData: CreateAccountDto,
+  ): Promise<CreateAccountResponse> {
     try {
       this.logger.log(`Creating account for CPF: ${accountData.cpf}`);
-      await this.accountsService.createByCpf(accountData);
-      this.logger.log(
-        `Account successfully created for CPF: ${accountData.cpf}`,
-      );
+      return await this.accountsService.createByCpf(accountData);
     } catch (error) {
       this.logger.error(
         `Error creating account for CPF ${accountData.cpf}: ${error.message}`,

@@ -4,7 +4,9 @@ import { UpdateStatusDto } from '../dtos/update-status.dto';
 import { Account } from '../entities/account.entity';
 
 export interface IAccountsService {
-  createByCpf(accountData: CreateAccountDto): Promise<Account>;
+  createByCpf(
+    accountData: CreateAccountDto,
+  ): Promise<{ id: string; accountNumber: string; agency: string }>;
   findByCpfOrAccount(value: string): Promise<AccountResponseDto>;
   findByCpf(cpf: string): Promise<Account | null>;
   findByAccountNumber(accountNumber: string): Promise<Account | null>;

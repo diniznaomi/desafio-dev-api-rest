@@ -43,24 +43,18 @@ describe('AccountsController', () => {
   describe('create', () => {
     it('should create an account successfully', async () => {
       const createAccountDto = makeCreateAccountDto();
-      const mockAccount = makeAccount({
+      const mockAccountResponse = {
+        id: 'account-id',
         accountNumber: '123456',
         agency: '0001',
-        balance: 0,
-        status: AccountStatus.ACTIVE,
-        holder: {
-          id: 'holder-id',
-          fullName: 'Test User',
-          cpf: createAccountDto.cpf,
-          accounts: [],
-        },
-      });
+      };
 
-      mockAccountsService.createByCpf.mockResolvedValue(mockAccount);
+      mockAccountsService.createByCpf.mockResolvedValue(mockAccountResponse);
 
-      await controller.create(createAccountDto);
+      const result = await controller.create(createAccountDto);
 
       expect(service.createByCpf).toHaveBeenCalledWith(createAccountDto);
+      expect(result).toEqual(mockAccountResponse);
     });
 
     it('should propagate errors from service', async () => {

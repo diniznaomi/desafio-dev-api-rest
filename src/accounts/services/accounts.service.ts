@@ -25,7 +25,9 @@ export class AccountsService implements IAccountsService {
     private readonly holderRepo: Repository<Holder>,
   ) {}
 
-  async createByCpf(accountData: CreateAccountDto) {
+  async createByCpf(
+    accountData: CreateAccountDto,
+  ): Promise<{ id: string; accountNumber: string; agency: string }> {
     this.logger.log(`Attempting to create account`);
 
     const holder = await this.holderRepo.findOne({
@@ -63,16 +65,27 @@ export class AccountsService implements IAccountsService {
       `Account created successfully with number: ${savedAccount.accountNumber}`,
     );
 
-    return savedAccount;
+    return {
+      id: savedAccount.id,
+      accountNumber: savedAccount.accountNumber,
+      agency: savedAccount.agency,
+    };
   }
 
-  private async handleExistingAccount(account: Account): Promise<Account> {
+  private async handleExistingAccount(
+    account: Account,
+  ): Promise<{ id: string; accountNumber: string; agency: string }> {
     if (account.status === AccountStatus.CLOSED) {
       this.logger.log(
         `Reactivating closed account number: ${account.accountNumber}`,
       );
       account.status = AccountStatus.ACTIVE;
-      return this.accountRepo.save(account);
+      const savedAccount = await this.accountRepo.save(account);
+      return {
+        id: savedAccount.id,
+        accountNumber: savedAccount.accountNumber,
+        agency: savedAccount.agency,
+      };
     } else {
       this.logger.warn(
         `Account already exists and is active for holder ID: ${account.holder.id}`,

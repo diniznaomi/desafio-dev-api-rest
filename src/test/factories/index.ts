@@ -8,3 +8,4 @@ export * from './dtos/transaction-response.factory';
 export * from './dtos/transaction-filter.factory';
 export * from './dtos/deposit.factory';
 export * from './dtos/withdraw.factory';
+export * from './dtos/create-account-response.factory';
