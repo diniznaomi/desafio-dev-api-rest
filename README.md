@@ -191,3 +191,7 @@ Erros e exceções com stack traces para depuração
 ## Contato
 
 Para dúvidas ou sugestões, entre em contato pelo e-mail: naomi.moura@icloud.com
+
+# Valores .env
+
+Os valores reais a serem preenchidos no .env foram compartilhados com a Gabriele, para não serem exportos no Github. Por favor, em caso de dúvida entre em contato. 
